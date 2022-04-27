@@ -1,7 +1,16 @@
 
 const usersGet = (req, res) => {
+    
+    //const queryparams = req.query;
+    const { q, nombre, apikey } = req.query; 
+    // const { id, nombre = 'no name' } = req.query;
+    
     res.json({
-        msg: 'get API'
+        msg: 'get API',
+        //queryparams
+        q,
+        nombre,
+        apikey
     });
 }
 
@@ -20,8 +29,12 @@ const usersPost = (req, res) => {
 }
 
 const usersPut = (req, res) => {
+    
+    const id = req.params.id;
+
     res.json({
-        msg: 'put API'
+        msg: 'put API',
+        id
     });
 }
 
