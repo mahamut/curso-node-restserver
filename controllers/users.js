@@ -117,15 +117,17 @@ const usersDelete = async(req, res) => {
     //esto boraría físicamente el registro del usuario en la colección
     //no se recomienda para poder hacer seguimiento a lo que puede o no haber hecho ese usuario
     //const deletedUser = await User.findByIdAndDelete(id);
-
-    const { estado } = req.body;
+    // trabajar sobre: const { estado } = req.body;
 
     const removedUser = await User.findByIdAndUpdate(id, {estado : false}, {new: true});
+    const deleterUser = req.authUser;
 
     res.json({
         msg: 'delete API',
         //deletedUser
-        removedUser
+        removedUser,
+        deleterUser
+
     });
 }
 

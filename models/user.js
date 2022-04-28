@@ -29,7 +29,6 @@ const userSchema = Schema({
     google: {
         type: Boolean,
         default: false
-
     }
 });
 
@@ -44,7 +43,8 @@ const userSchema = Schema({
 } */
 
 userSchema.methods.toJSON = function() {
-    const { __v, pass, ...user } = this.toObject();
+    const { __v, pass, _id, ...user } = this.toObject();
+    user.uid = _id;
     return user;
 }
 
